@@ -2,18 +2,14 @@ import java.util.ArrayList;
 
 class Solution {
     public static int[] solution(String[] intStrs, int k, int s, int l) {
-        ArrayList<Integer> answerList = new ArrayList<>();
-        int[] answer;
+        ArrayList<Integer> answer = new ArrayList<>();
 
         for (String str : intStrs) {
-            char[] c = str.toCharArray();
-            StringBuilder sb = new StringBuilder(String.copyValueOf(c));
-
-            int num = Integer.parseInt(sb.substring(s, s + l));
-
+            int num = Integer.parseInt(str.substring(s, s + l));
             if (num > k)
-                answerList.add(num);
+                answer.add(num);
         }
-        return answerList.stream().mapToInt(a -> a).toArray();
+
+        return answer.stream().mapToInt(a -> a).toArray();
     }
 }
