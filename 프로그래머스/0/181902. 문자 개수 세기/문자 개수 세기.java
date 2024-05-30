@@ -3,13 +3,9 @@ class Solution {
         int[] answer = new int [52];
 
         for(int i =0 ; i < my_string.length(); i++){
-            int j = 0;
-            if(65 <= my_string.charAt(i) - 0 && my_string.charAt(i) - 0 <= 90)
-                j = my_string.charAt(i) - 65;
-            else
-                j = my_string.charAt(i) - 71;
+            int j = 'a' > my_string.charAt(i) ? my_string.charAt(i) - 65 : my_string.charAt(i) - 71;
             
-            answer[j] += 1;
+            answer[j]++;
         }
 
         return answer;
