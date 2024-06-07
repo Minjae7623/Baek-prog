@@ -2,10 +2,8 @@ import java.util.Arrays;
 
 class Solution {
     public String[] solution(String myString) {
-        String str = myString.replace("x", " ");
-        String[] answer = str.trim().split("\\s+");
-        Arrays.sort(answer);
-
-        return answer;
+        String[] arr = Arrays.stream(myString.split("x")).filter(str -> !str.isEmpty()).toArray(String[]::new);
+        Arrays.sort(arr);
+        return arr;
     }
 }
