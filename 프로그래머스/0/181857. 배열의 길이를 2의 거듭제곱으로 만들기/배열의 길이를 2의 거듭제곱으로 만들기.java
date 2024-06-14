@@ -2,16 +2,11 @@ import java.util.Arrays;
 
 class Solution {
     public static int[] solution(int[] arr) {
-        int size = 0;
+        int size = 1;
 
-        while (arr.length > Math.pow(2, size))
-            size++;
+        while (arr.length > size)
+            size *= 2;
 
-        size = (int) Math.pow(2, size);
-
-        int[] answer = {};
-        answer = Arrays.copyOf(arr, size);
-
-        return answer;
+        return Arrays.copyOf(arr, size);
     }
 }
