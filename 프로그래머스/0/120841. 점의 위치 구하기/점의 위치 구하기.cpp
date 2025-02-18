@@ -4,18 +4,11 @@
 using namespace std;
 
 int solution(vector<int> dot) {
-    int answer = 0;
+    int x = dot[0];
+    int y = dot[1];
 
-    //x > 0, 1 | 4
-    if (dot[0] > 0)
-    {
-        answer = (dot[1] > 0) ? 1 : 4;
-    }
-    //x <= 0, 2 | 3
-    else
-    {
-        answer = (dot[1] > 0) ? 2 : 3;
-    }
-
-    return answer;
+    if (x > 0 && y > 0) return 1;
+    if (x < 0 && y > 0) return 2;
+    if (x < 0 && y < 0) return 3;
+                        return 4; 
 }
