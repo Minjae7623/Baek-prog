@@ -1,34 +1,32 @@
 #include <string>
+#include <vector>
 #include <set>
 using namespace std;
 
 int solution(string dirs) {  
-    int answer = 0;
-    int x = 0, y = 0;
-    //못풀어서 찾아봄
-    set<pair<pair<int, int>, pair<int, int>>> path;
+    int x = 5, y = 5;
+
+    set<pair<pair <int, int>, pair<int, int>>> path;
 
     for (auto dir : dirs)
     {
         int nx = x, ny = y;
-
-        if ('U' == dir)  --ny;
-        else if ('D' == dir) ++ny;
-        else if ('L' == dir) --nx;
-        else if ('R' == dir) ++nx;
-
-        if (nx < -5 || nx > 5 || ny < -5 || ny > 5) continue;
-
-        if (path.find({ {x,y} ,{nx,ny} }) == path.end() &&
-            path.find({ {nx,ny} ,{x,y} }) == path.end())
+        switch (dir)
         {
-            path.insert({ {x,y}, {nx,ny} });
-            ++answer;
+        case 'U': { --ny; } break;
+        case 'D': { ++ny; } break;
+        case 'L': { --nx; } break;
+        case 'R': { ++nx; } break;
         }
 
-        x = nx;
-        y = ny;
+        if (ny < 0 || ny > 10 || nx < 0 || nx > 10) continue;
+
+        path.insert({ {x, y}, {nx, ny} });
+        path.insert({ {nx, ny}, {x, y} });
+
+        x = nx, y = ny;
     }
 
+    int answer = path.size() / 2;
     return answer;
 }
