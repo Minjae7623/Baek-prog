@@ -7,20 +7,17 @@ using namespace std;
 string solution(vector<string> participant, vector<string> completion) {
     unordered_map <string, int> mapNames;
 
-    for (string name : participant)
+    for (const string& name : completion)
     {
         ++mapNames[name];
     }
 
-    for (string delName : completion)
+    for (const string& name : participant)
     {
-        --mapNames[delName];
-    }
+        --mapNames[name];
 
-    for (auto iter : mapNames)
-    {
-        if (1 == iter.second)
-            return iter.first;
+        if (0 > mapNames[name])
+            return name;
     }
 
     return "";
