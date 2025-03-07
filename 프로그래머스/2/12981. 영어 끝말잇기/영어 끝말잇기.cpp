@@ -13,21 +13,14 @@ vector<int> solution(int n, vector<string> words) {
 
     for (const string& word : words)
     {
-        //중복 체크
-        if (setDuplicate.end() != setDuplicate.find(word)) 
+        //중복 또는 끝말잇기 실패
+        if (setDuplicate.end() != setDuplicate.find(word) || prevWord.back() != word.front())
         {
             isBreak = true;
             break;
         }
 
         setDuplicate.insert(word);
-
-        //끝말잇기 체크
-        if (prevWord.back() != word.front())
-        {
-            isBreak = true;
-            break;
-        }
 
         prevWord = word;
         ++count;
