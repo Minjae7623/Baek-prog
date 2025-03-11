@@ -4,20 +4,14 @@
 using namespace std;
 
 string solution(string my_string) {
-    string answer(my_string);
+    string answer = "";
 
-    for (auto it = answer.begin(); it != answer.end(); )
+    for (char c : my_string)
     {
-        switch (*it)
+        if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u')
         {
-        case 'a':case 'e':case 'i':case 'o':case 'u':
-            answer.erase(it);
-            break;
-        default:
-            ++it;
-            break;
+            answer += c;
         }
     }
-
     return answer;
 }
