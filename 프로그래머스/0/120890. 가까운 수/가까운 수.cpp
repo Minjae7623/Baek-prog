@@ -10,28 +10,18 @@ int solution(vector<int> array, int n) {
 
     sort(array.begin(), array.end());
 
-    for (int i = 0; i < array.size(); ++i)//차 구하기
+    for (int i = 0; i < array.size(); ++i)
     {
         int sub = abs(array[i] - n);
 
         if (sub < min)
+        {
             min = sub;
+            answer = array[i];
+        }
 
         if (array[i] > n)
-        {
             break;
-        }
-    }
-
-    for (int i = 0; i < array.size(); ++i)//가까운 수 여러개일 경우 작은 수 구하기
-    {
-        int sub = abs(array[i] - n);
-
-        if (sub == min)
-        {
-            answer = array[i];
-            break;
-        }
     }
 
     return answer;
