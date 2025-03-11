@@ -1,17 +1,15 @@
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 string solution(string my_string) {
-    string answer = "";
+    string answer(my_string);
 
-    for (char c : my_string)
-    {
-        if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u')
-        {
-            answer += c;
-        }
-    }
+    answer.erase(remove_if(answer.begin(), answer.end()
+        , [](char c) {return ('a' == c || 'e' == c || 'i' == c || 'o' == c || 'u' == c); })
+        , answer.end());
+
     return answer;
 }
